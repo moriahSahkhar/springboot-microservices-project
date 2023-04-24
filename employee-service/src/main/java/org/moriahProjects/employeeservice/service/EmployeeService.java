@@ -24,6 +24,7 @@ public class EmployeeService {
         Employee employee = AutoMapper.MAPPER.mapToEmployee(employeeDto);
 
         System.out.println("HERE:::"+employeeDto.toString());
+        System.out.println("HERE2:::"+employee.getDepartmentCode());
 
         return AutoMapper.MAPPER.mapToEmployeeDto(employeeRepo.save(employee));
     }
@@ -31,7 +32,7 @@ public class EmployeeService {
     public APIResponseDto getEmployeeById(Long empId){
         Employee employee = employeeRepo.findById(empId).get();
 
-        ResponseEntity<DepartmentDto> responseEntity = restTemplate.getForEntity("localhost:8080/api/departments/"+employee.getDepartmentCode(),
+        ResponseEntity<DepartmentDto> responseEntity = restTemplate.getForEntity("http://localhost:8080/api/departments/"+employee.getDepartmentCode(),
                 DepartmentDto.class);
 
         DepartmentDto departmentDto = responseEntity.getBody();
