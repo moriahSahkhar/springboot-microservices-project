@@ -1,18 +1,14 @@
 package org.moriahProjects.employeeservice.service;
 
-import lombok.AllArgsConstructor;
 import org.moriahProjects.employeeservice.dto.APIResponseDto;
 import org.moriahProjects.employeeservice.dto.DepartmentDto;
 import org.moriahProjects.employeeservice.dto.EmployeeDto;
 import org.moriahProjects.employeeservice.entity.Employee;
 import org.moriahProjects.employeeservice.mapper.AutoMapper;
 import org.moriahProjects.employeeservice.repository.EmployeeRepo;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.Optional;
+import lombok.AllArgsConstructor;	
 
 @AllArgsConstructor
 @Service
