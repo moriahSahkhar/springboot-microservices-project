@@ -8,7 +8,8 @@ import org.moriahProjects.employeeservice.mapper.AutoMapper;
 import org.moriahProjects.employeeservice.repository.EmployeeRepo;
 import org.springframework.stereotype.Service;
 
-import lombok.AllArgsConstructor;	
+import lombok.AllArgsConstructor;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @AllArgsConstructor
 @Service
@@ -16,7 +17,7 @@ public class EmployeeService {
 
     private EmployeeRepo employeeRepo;
 //    private RestTemplate restTemplate;
-//    private WebClient webClient;
+    private WebClient webClient;
     private APIClient apiClient;
 
     public EmployeeDto saveEmployee(EmployeeDto employeeDto){
@@ -36,11 +37,11 @@ public class EmployeeService {
 //        DepartmentDto departmentDto = responseEntity.getBody();
 
         //webflux
-//        DepartmentDto departmentDto = webClient.get()
-//                .uri("http://localhost:8080/api/departments/"+employee.getDepartmentCode())
-//                .retrieve()
-//                .bodyToMono(DepartmentDto.class)
-//                .block();
+        DepartmentDto departmentDto = webClient.get()
+                .uri("http://localhost:8080/api/departments/"+employee.getDepartmentCode())
+                .retrieve()
+                .bodyToMono(DepartmentDto.class)
+                .block();
 
         DepartmentDto departmentDto = apiClient.getDepartmentByCode(employee.getDepartmentCode());
 
